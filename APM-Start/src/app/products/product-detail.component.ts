@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
   //selector: 'pm-product-detail',  //no need seletor because we use this components as routing page instead of nesting
@@ -9,22 +10,25 @@ import { IProduct } from './product';
 })
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
-  product: IProduct;
+  errorMessage: string = "";
+  product: IProduct | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+    private router: Router,
+    private productService: ProductService) { 
+  }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.pageTitle += `: ${id}`;
-    this.product = {
-      "productId": id,
-      "productName": "Garden Cart",
-      "productCode": "GDN-0023",
-      "releaseDate": "March 18, 2016",
-      "description": "15 gallon capacity rolling garden cart",
-      "price": 32.99,
-      "starRating": 4.2,
-      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+    let param = this.route.snapshot.paramMap.get('id');
+    if(param){
+      //convert from string to number
+      const id = +param;
+      this.productService.getProductById(id).subscribe(
+        (product) => {
+          this.product = product;
+        },
+        (error) => this.errorMessage = <any>error
+      );
     }
   }
 
