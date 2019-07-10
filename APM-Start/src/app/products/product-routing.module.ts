@@ -17,6 +17,7 @@ import { ProductDetailComponent } from './product-detail.component';
        component: ProductDetailComponent},
     ])
   ],
+  //define what an importing module can use
   exports:[
     RouterModule
   ]

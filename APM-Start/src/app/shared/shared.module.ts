@@ -12,7 +12,7 @@ import { ConvertToSpacesPipe } from './convert-to-space.pipe';
     StarComponent,
     ConvertToSpacesPipe
   ],
-  //export to other modules to use
+  //define what an importing module can use
   exports: [
     StarComponent,
     ConvertToSpacesPipe,

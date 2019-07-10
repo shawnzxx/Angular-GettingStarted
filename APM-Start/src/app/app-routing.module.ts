@@ -13,6 +13,7 @@ import { WelcomeComponent } from './home/welcome.component';
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ]),
   ],
+  //define what an importing module can use
   //must export it so that ProductModule's template can use Route service's directive
   exports: [RouterModule]
 })
