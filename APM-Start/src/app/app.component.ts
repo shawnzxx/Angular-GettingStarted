@@ -8,5 +8,5 @@ import { Component } from "@angular/core";
 
 //since this is our application component so we follow the conventions
 export class AppComponent{
-    pageTitle: string = 'Shawn zhang project management tools';
+    pageTitle: string = 'Project management tools';
 }

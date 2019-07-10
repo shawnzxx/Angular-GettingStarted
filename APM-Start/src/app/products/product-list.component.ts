@@ -4,7 +4,7 @@ import { ProductService } from "./product.service";
 
 @Component({
     //we can use this directive in any other component
-    selector: 'pm-product',
+    // selector: 'pm-product',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit{
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
-    showImage: boolean = false;
+    showImage: boolean = true;
     errorMessage: string;
 
     private _listFilter : string;
