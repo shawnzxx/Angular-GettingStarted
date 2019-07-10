@@ -2,15 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
+import { RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { ConvertToSpacesPipe } from './shared/convert-to-space.pipe';
-import { StarComponent } from './shared/star.component';
-import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductDetailGuard } from './products/product-detail.guard';
+import { ProductModule } from './products/product.module';
 
 
 
@@ -22,28 +18,21 @@ import { ProductDetailGuard } from './products/product-detail.guard';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: 'products', component: ProductListComponent},
-      {path: 'products/:id',
-       canActivate: [ProductDetailGuard],
-       component: ProductDetailComponent},
       {path: 'welcome', component: WelcomeComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
-    ])
+    ]),
+    ProductModule
   ],
   //all our internal classes
-  //The set of components, directives, and pipes (declarables) that belong to this module.
+  //The set of components, directives, and pipes (declarables) that belong to AppModule.
   declarations: [
-    AppComponent, 
-    ProductListComponent, 
-    ConvertToSpacesPipe,
-    StarComponent,
-    ProductDetailComponent,
+    AppComponent,
     WelcomeComponent
   ],
-  //define bootstrap components, this component should have the selector we used in index.html
+  //define bootstrap components, these components will init inside index.html use as directly tag
   bootstrap: [AppComponent]
 })
 
-//1: everything in angular follows: we define angular modules by class
+//Export everything above as a AppModule
 export class AppModule { }
