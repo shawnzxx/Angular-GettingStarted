@@ -9,7 +9,7 @@ import { ProductService } from "./product.service";
     styleUrls: ['./product-list.component.css']
 })
 
-//implement the lifecycle hook interface this step not required
+//we implement angular OnInit interface
 //highly recommended so that you can write code for the hook method
 export class ProductListComponent implements OnInit{
     pageTitle: string = 'Product List';

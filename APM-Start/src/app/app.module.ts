@@ -14,9 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   //all external modules other components may need to use
   imports: [
-    //BrowserModule register critical application service providers
+    //BrowserModule register critical application service providers, such as error handlling
     //it import and export CommonModule which declare an export directvie like ng-if and ng-for
-    BrowserModule, 
+    BrowserModule,
+    //include two way binding [(ngModule)]
     FormsModule,
     HttpClientModule,
     //each feature modules in here
@@ -30,7 +31,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent, //--this is our root component
     WelcomeComponent
   ],
-  //define bootstrap components, these components will init inside index.html use as directly tag
+  //define start up components, start up component should contain selector directive 
+  //which used inside the index.html
   bootstrap: [AppComponent]
 })
 
